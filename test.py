@@ -8,3 +8,6 @@ doc = ['<html><head><title>Page title</title></head>',
 soup = BeautifulSoup(''.join(doc))
 
 print soup.prettify()
+
+f = open('mypage.html');
+# f.read()
