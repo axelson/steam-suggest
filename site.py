@@ -2,11 +2,13 @@
 import re
 
 print "Content-type: text/html\n\n"
-print "Hello world"
+print "Hello, you own the following games:"
 
 print "<br><br>"
 
 f = open('mypage.html')
-m = re.findall("rgGames\[.*= '(.*)';", f.read())
+games = re.findall("rgGames\[.*= '(.*)';", f.read())
 
-print m
+for game in games :
+    print game
+    print "<br>"
