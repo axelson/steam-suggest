@@ -16,10 +16,11 @@ print 'positron = positrons<br>'
 positron = "positrons"
 
 defaultSteamId = "defaultvalue"
+defaultFilter = "defaultFilter"
 
 form = cgi.FieldStorage()
 steamid = form.getvalue("steamid", defaultSteamId)
-filter = form.getvalue("filter", "(no message)")
+filter = form.getvalue("filter", defaultFilter)
 
 url = "default"
 if steamid == defaultSteamId:
@@ -58,5 +59,8 @@ print "<br>"
 
 for game in games :
     if re.search(filter, game) :
+        print game
+        print "<br>"
+    elif filter == defaultFilter:
         print game
         print "<br>"
