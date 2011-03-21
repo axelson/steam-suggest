@@ -26,14 +26,6 @@ print """
     <p><a href="http://orderedlist.com/articles/live-search-with-quicksilver-style/">&laquo; Back to Article</a> - <a href="http://orderedlist.com/demos/quicksilverjs/">See Prototype Version</a></p>
 
     <h1>jQuery Live Search with Quicksilver Style</h1>
-
-    <p>Try a few searches like 'jason' and 'wdprss'.</p>
-
-    <form method="get">
-      <div>
-        <input type="text" value="" name="q" id="q" />
-      </div>
-    </form>
 """
 # Profiles
 print "profiles:<br>"
@@ -79,6 +71,17 @@ print """
 </form>
 
 """ % cgi.escape(steamid)
+
+print """
+
+    <p>Try a few searches like 'jason' and 'wdprss'.</p>
+
+    <form method="get">
+      <div>
+        <input type="text" value="" name="q" id="q" />
+      </div>
+    </form>
+"""
 
 print """
 
