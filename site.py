@@ -5,9 +5,36 @@ import urllib
 
 print "Content-type: text/html\n\n"
 print "<html>"
-print "<head><title>Steam Suggest</title></head>"
-print "<body>"
+print "<head><title>Steam Suggest</title>"
 
+print """
+
+    <link rel="stylesheet" href="jquery/common.css" type="text/css" media="screen" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="jquery/quicksilver.js"></script>
+    <script type="text/javascript" src="jquery/jquery.livesearch.js"></script>
+    <script type="text/javascript" charset="utf-8">
+      $(document).ready(function() {
+          $('#q').liveUpdate('#posts').focus();
+          });
+    </script>
+
+</head>
+<body>
+
+  <div id="wrapper">
+    <p><a href="http://orderedlist.com/articles/live-search-with-quicksilver-style/">&laquo; Back to Article</a> - <a href="http://orderedlist.com/demos/quicksilverjs/">See Prototype Version</a></p>
+
+    <h1>jQuery Live Search with Quicksilver Style</h1>
+
+    <p>Try a few searches like 'jason' and 'wdprss'.</p>
+
+    <form method="get">
+      <div>
+        <input type="text" value="" name="q" id="q" />
+      </div>
+    </form>
+"""
 # Profiles
 print "profiles:<br>"
 print 'bostonvaulter = 76561197973312035<br>'
@@ -67,12 +94,10 @@ for game in games :
         print "<li>"
         print game
         print "</li>"
-        print "<br>"
     elif filter == defaultFilter:
         print "<li>"
         print game
         print "</li>"
-        print "<br>"
 
 print """
 </ul>
