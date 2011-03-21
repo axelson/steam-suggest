@@ -37,11 +37,9 @@ print 'positron = positrons<br>'
 positron = "positrons"
 
 defaultSteamId = "defaultvalue"
-defaultFilter = "defaultFilter"
 
 form = cgi.FieldStorage()
 steamid = form.getvalue("steamid", defaultSteamId)
-filter = form.getvalue("filter", defaultFilter)
 
 url = "default"
 if steamid == defaultSteamId:
@@ -66,7 +64,6 @@ print """
 
 <form method="post" action="site.py">
 <p>steamid: <input type="text" name="steamid"/></p>
-<p>filter: <input type="text" name="filter"/></p>
 <input type="submit" />
 </form>
 
@@ -81,26 +78,16 @@ print """
         <input type="text" value="" name="q" id="q" />
       </div>
     </form>
-"""
 
-print """
-
-Of the games you own, the following games match %(filter)s:
+Here are the games you own:
 <br>
 <ul id="posts">
-
-""" % {"filter": filter }
-
+"""
 
 for game in games :
-    if re.search(filter, game) :
-        print "<li>"
-        print game
-        print "</li>"
-    elif filter == defaultFilter:
-        print "<li>"
-        print game
-        print "</li>"
+    print "<li>"
+    print game
+    print "</li>"
 
 print """
 </ul>
