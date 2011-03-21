@@ -4,7 +4,9 @@ import cgi
 import urllib
 
 print "Content-type: text/html\n\n"
-print "<br><br>"
+print "<html>"
+print "<head><title>Steam Suggest</title></head>"
+print "<body>"
 
 # Profiles
 print "profiles:<br>"
@@ -49,9 +51,6 @@ print """
 <input type="submit" />
 </form>
 
-</body>
-
-</html>
 """ % cgi.escape(steamid)
 
 print "Of the games you own, the following games match (" + filter + "):"
@@ -64,3 +63,10 @@ for game in games :
     elif filter == defaultFilter:
         print game
         print "<br>"
+
+
+print """
+</body>
+
+</html>
+"""
