@@ -3,13 +3,10 @@ import re
 import cgi
 import urllib
 from BeautifulSoup import BeautifulSoup
-soup = BeautifulSoup("""Bob's <b>Bold</b> Barbeque Sauce now available in 
-                                <b class="hickory">Hickory</b> and <b class="lime">Lime</a>""")
 
 print "Content-type: text/html\n\n"
 print "<html>"
 print "<head><title>Steam Suggest</title>"
-print soup.find("b", { "class" : "lime" })
 
 
 print """
@@ -58,6 +55,8 @@ else:
 
 games = re.findall("rgGames\[.*= '(.*)';", text)
 
+soup = BeautifulSoup(text)
+print soup.find("div", { "class" : "gameListRow" })
 #if they set up their own id then use /id if they're using a profile number than use /profiles
 
 print "Checking url: " + url
