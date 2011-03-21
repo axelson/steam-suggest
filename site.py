@@ -2,10 +2,15 @@
 import re
 import cgi
 import urllib
+from BeautifulSoup import BeautifulSoup
+soup = BeautifulSoup("""Bob's <b>Bold</b> Barbeque Sauce now available in 
+                                <b class="hickory">Hickory</b> and <b class="lime">Lime</a>""")
 
 print "Content-type: text/html\n\n"
 print "<html>"
 print "<head><title>Steam Suggest</title>"
+print soup.find("b", { "class" : "lime" })
+
 
 print """
 
