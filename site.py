@@ -56,7 +56,7 @@ else:
 games = re.findall("rgGames\[.*= '(.*)';", text)
 
 soup = BeautifulSoup(text)
-print soup.find("div", { "class" : "gameListRow" })
+print soup.findAll("div", { "class" : "gameListRow" }, limit=3)
 #if they set up their own id then use /id if they're using a profile number than use /profiles
 
 print "Checking url: " + url
