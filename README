@@ -1,0 +1,7 @@
+A web service to display a user's steam games and recommend games for them to play.
+
+Planned features:
+* Filter by:
+** Install size
+** Time played
+** OS
