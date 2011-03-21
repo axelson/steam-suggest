@@ -57,19 +57,25 @@ print """
 
 Of the games you own, the following games match %(filter)s:
 <br>
+<ul id="posts">
 
 """ % {"filter": filter }
 
+
 for game in games :
     if re.search(filter, game) :
+        print "<li>"
         print game
+        print "</li>"
         print "<br>"
     elif filter == defaultFilter:
+        print "<li>"
         print game
+        print "</li>"
         print "<br>"
 
-
 print """
+</ul>
 </body>
 
 </html>
