@@ -7,8 +7,12 @@ print "Content-type: text/html\n\n"
 print "<br><br>"
 
 # Profiles
+print "profiles:<br>"
+print 'bostonvaulter = 76561197973312035<br>'
 bostonvaulter = "76561197973312035"
+print 'jibbers = 76561197977685020<br>'
 jibbers = "76561197977685020"
+print 'positron = positrons<br>'
 positron = "positrons"
 
 defaultSteamId = "defaultvalue"
