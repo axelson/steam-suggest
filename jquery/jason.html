@@ -3,13 +3,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Live Search with Quicksilver Style</title>
-    <link rel="stylesheet" href="http://orderedlist.com/demos/quicksilverjs/stylesheets/common.css" type="text/css" media="screen" />
-    <script type="text/javascript" src="http://orderedlist.com/demos/quicksilverjs/javascripts/jquery.js"></script>
-    <script type="text/javascript" src="http://orderedlist.com/demos/quicksilverjs/javascripts/quicksilver.js"></script>
-    <script type="text/javascript" src="http://orderedlist.com/demos/quicksilverjs/javascripts/jquery.livesearch.js"></script>
+    <link rel="stylesheet" href="common.css" type="text/css" media="screen" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="quicksilver.js"></script>
+    <script type="text/javascript" src="jquery.livesearch.js"></script>
     <script type="text/javascript" charset="utf-8">
       $(document).ready(function() {
-          $('#q').liveUpdate('posts').focus();
+          $('#q').liveUpdate('#posts').focus();
           });
 </script>
 <script type="text/javascript" src="/mint/?js"></script>
@@ -21,7 +21,7 @@
 
     <h1>jQuery Live Search with Quicksilver Style</h1>
 
-    <p>Try a few searches like 'nnmkr' and 'wdprss'.</p>
+    <p>Try a few searches like 'jason' and 'wdprss'.</p>
 
     <form method="get">
       <div>
