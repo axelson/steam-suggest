@@ -53,8 +53,12 @@ print """
 
 """ % cgi.escape(steamid)
 
-print "Of the games you own, the following games match (" + filter + "):"
-print "<br>"
+print """
+
+Of the games you own, the following games match %(filter)s:
+<br>
+
+""" % {"filter": filter }
 
 for game in games :
     if re.search(filter, game) :
