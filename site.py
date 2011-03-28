@@ -66,6 +66,12 @@ def getImages( soup ):
 
     return images
 
+def getGameName( soup ):
+    gameDetails = soup.findAll("div", { "class" : "game_area_details_specs" })
+
+    title = soup.find(text='Title:').next
+    return title
+
 
 print getImages(oneGameSoup)
 print getGenres(oneGameSoup)
