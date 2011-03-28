@@ -40,6 +40,19 @@ positron = "positrons"
 
 defaultSteamId = "defaultvalue"
 
+
+
+#oneGameText = urllib.urlopen('http://store.steampowered.com/app/15520').read()
+oneGameText = open('gravityGame.html')
+oneGameSoup = BeautifulSoup(oneGameText)
+gameDetails = oneGameSoup.findAll("div", { "class" : "game_area_details_specs" })
+
+for detail in gameDetails :
+    tag = detail.findAll("div", { "class" : "name" })
+    tag[0].extract()
+    print detail.renderContents()
+
+
 form = cgi.FieldStorage()
 steamid = form.getvalue("steamid", defaultSteamId)
 
