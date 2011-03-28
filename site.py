@@ -47,7 +47,7 @@ oneGameText = open('gravityGame.html')
 oneGameSoup = BeautifulSoup(oneGameText)
 
 def printImages( soup ):
-    gameDetails = oneGameSoup.findAll("div", { "class" : "game_area_details_specs" })
+    gameDetails = soup.findAll("div", { "class" : "game_area_details_specs" })
 
     for detail in gameDetails :
         print detail.img
