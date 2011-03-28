@@ -45,10 +45,14 @@ defaultSteamId = "defaultvalue"
 #oneGameText = urllib.urlopen('http://store.steampowered.com/app/15520').read()
 oneGameText = open('gravityGame.html')
 oneGameSoup = BeautifulSoup(oneGameText)
-gameDetails = oneGameSoup.findAll("div", { "class" : "game_area_details_specs" })
 
-for detail in gameDetails :
-    print detail.img
+def printImages( soup ):
+    gameDetails = oneGameSoup.findAll("div", { "class" : "game_area_details_specs" })
+
+    for detail in gameDetails :
+        print detail.img
+
+printImages(oneGameSoup)
 
 
 form = cgi.FieldStorage()
