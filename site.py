@@ -53,7 +53,7 @@ def printImages( soup ):
         print detail.img
 
 printImages(oneGameSoup)
-
+printImages(BeautifulSoup(open('braid.html')))
 
 form = cgi.FieldStorage()
 steamid = form.getvalue("steamid", defaultSteamId)
