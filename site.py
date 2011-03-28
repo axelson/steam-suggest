@@ -72,13 +72,17 @@ def getGameName( soup ):
     title = soup.find(text='Title:').next
     return title
 
+def printGameDetails( soup ):
+    print getGameName( soup ) + ": "
+    print getImages( soup )
+    print getGenres( soup )
 
-print getImages(oneGameSoup)
-print getGenres(oneGameSoup)
+
+printGameDetails( oneGameSoup )
 print "<br>"
 braidSoup = BeautifulSoup(open('braid.html'))
-print getImages(braidSoup)
-print getGenres(braidSoup)
+printGameDetails( braidSoup )
+print "<br>"
 
 
 form = cgi.FieldStorage()
