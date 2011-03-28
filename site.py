@@ -49,11 +49,19 @@ oneGameSoup = BeautifulSoup(oneGameText)
 def printImages( soup ):
     gameDetails = soup.findAll("div", { "class" : "game_area_details_specs" })
 
+    # print icons
     for detail in gameDetails :
         print detail.img
 
+    # print genre's
+    detailsBlock = soup.find(text='Genre:').parent.parent
+    genreTags = detailsBlock.findAll(href=re.compile('genre'))
+    for genre in genreTags :
+        print genre
+
 printImages(oneGameSoup)
 printImages(BeautifulSoup(open('braid.html')))
+
 
 form = cgi.FieldStorage()
 steamid = form.getvalue("steamid", defaultSteamId)
