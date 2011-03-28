@@ -46,25 +46,33 @@ defaultSteamId = "defaultvalue"
 oneGameText = open('gravityGame.html')
 oneGameSoup = BeautifulSoup(oneGameText)
 
-def printGenres( soup ):
+def getGenres( soup ):
     gameDetails = soup.findAll("div", { "class" : "game_area_details_specs" })
 
-    # print genre's
+    genres = []
     detailsBlock = soup.find(text='Genre:').parent.parent
     genreTags = detailsBlock.findAll(href=re.compile('genre'))
     for genre in genreTags :
-        print genre
+        genres.append( genre )
 
-def printImages( soup ):
+    return genres
+
+def getImages( soup ):
     gameDetails = soup.findAll("div", { "class" : "game_area_details_specs" })
 
-    # print icons
+    images = []
     for detail in gameDetails :
-        print detail.img
+        images.append(detail.img)
+
+    return images
 
 
-printImages(oneGameSoup)
-printImages(BeautifulSoup(open('braid.html')))
+print getImages(oneGameSoup)
+print getGenres(oneGameSoup)
+print "<br>"
+braidSoup = BeautifulSoup(open('braid.html'))
+print getImages(braidSoup)
+print getGenres(braidSoup)
 
 
 form = cgi.FieldStorage()
