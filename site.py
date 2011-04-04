@@ -81,6 +81,7 @@ def printGameDetails( soup ):
 class Game:
     def __init__(self, name):
         self.name = name
+        self.hoursPlayed = 0
     def sayHi(self):
         print 'Hi there, this is' + self.name
 
@@ -97,9 +98,7 @@ def getTimePlayed( allGameSoup ):
         index = hoursPlayedStr.find(' hrs')
         if( index != -1 ):
             hoursPlayed = float(hoursPlayedStr[:index])
-            print game.name + ": %s hours<br>" % hoursPlayed
-        else:
-            print game.name + ": 0 hours<br>"
+            game.hoursPlayed = hoursPlayed
 
 printGameDetails( oneGameSoup )
 print "<br>"
