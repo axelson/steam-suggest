@@ -91,8 +91,9 @@ class Game:
 def parseGameList( allGameSoup ):
     """Get the time played for each game from the all games page/tab"""
     print "start parseGameList"
-    games = allGameSoup.findAll("div", { "class" : "gameListRowItem" })
-    for gameTag in games:
+    games = []
+    gamesTagList = allGameSoup.findAll("div", { "class" : "gameListRowItem" })
+    for gameTag in gamesTagList:
         print "\n"
         gameName = gameTag.h4.text
         game = Game(gameName)
@@ -101,6 +102,9 @@ def parseGameList( allGameSoup ):
         if( index != -1 ):
             hoursPlayed = float(hoursPlayedStr[:index])
             game.hoursPlayed = hoursPlayed
+        games.append(game)
+    return games
+
 
 printGameDetails( oneGameSoup )
 print "<br>"
