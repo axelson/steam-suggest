@@ -130,9 +130,9 @@ games = re.findall("rgGames\[.*= '(.*)';", text)
 
 soup = BeautifulSoup(text)
 parseGameList( soup )
-gameList = soup.findAll("div", { "class" : "gameListRow" }, limit=3)
-for game in gameList :
-    print game.renderContents()
+gameTagList = soup.findAll("div", { "class" : "gameListRow" }, limit=3)
+for gameTag in gameTagList :
+    print gameTag.renderContents()
 #if they set up their own id then use /id if they're using a profile number than use /profiles
 
 print "Checking url: " + url
