@@ -31,7 +31,7 @@ print """
 """
 # Profiles
 print "profiles:<br>"
-print 'bostonvaulter = 76561197973312035<br>'
+print 'bostonvaulter = <a href="http://steamcommunity.com/profiles/76561197973312035/games?tab=all">76561197973312035</a><br>'
 bostonvaulter = "76561197973312035"
 print 'jibbers = 76561197977685020<br>'
 jibbers = "76561197977685020"
