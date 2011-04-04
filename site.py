@@ -84,6 +84,8 @@ class Game:
         self.hoursPlayed = 0
     def sayHi(self):
         print 'Hi there, this is' + self.name
+    def printDetails(self):
+        print "%s: %s hours" % (self.name, self.hoursPlayed)
 
 
 def parseGameList( allGameSoup ):
