@@ -126,10 +126,8 @@ else:
     url = 'http://steamcommunity.com/profiles/' + steamid + '/games?tab=all'
     text = urllib.urlopen(url).read()
 
-games = re.findall("rgGames\[.*= '(.*)';", text)
-
 soup = BeautifulSoup(text)
-parseGameList( soup )
+gameList = parseGameList( soup )
 gameTagList = soup.findAll("div", { "class" : "gameListRow" }, limit=3)
 for gameTag in gameTagList :
     print gameTag.renderContents()
@@ -164,9 +162,9 @@ Here are the games you own:
 <ul id="posts">
 """
 
-for game in games :
+for game in gameList :
     print "<li>"
-    print game
+    print game.name
     print "</li>"
 
 print """
