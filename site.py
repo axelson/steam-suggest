@@ -88,13 +88,15 @@ class Game:
 def getTimePlayed( allGameSoup ):
     """Get the time played for each game from the all games page/tab"""
     print "start getTimePlayed"
-    game = Game('bob')
     games = allGameSoup.findAll("div", { "class" : "gameListRowItem" })
-    print "\n"
-    index = games[0].h5.text.index(' hrs')
-    hoursPlayed = float(games[0].h5.text[:index])
-    print "this game has been played %s hours" % hoursPlayed
-    game.sayHi()
+    for gameTag in games:
+        game = Game('bob')
+        print "\n"
+        hoursPlayedStr = gameTag.h5.text
+        index = hoursPlayedStr.find(' hrs')
+        if( index != -1 ):
+            hoursPlayed = float(hoursPlayedStr[:index])
+            print "this game has been played %s hours<br>" % hoursPlayed
 
 printGameDetails( oneGameSoup )
 print "<br>"
