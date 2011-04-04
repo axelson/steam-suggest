@@ -90,13 +90,16 @@ def getTimePlayed( allGameSoup ):
     print "start getTimePlayed"
     games = allGameSoup.findAll("div", { "class" : "gameListRowItem" })
     for gameTag in games:
-        game = Game('bob')
         print "\n"
+        gameName = gameTag.h4.text
+        game = Game(gameName)
         hoursPlayedStr = gameTag.h5.text
         index = hoursPlayedStr.find(' hrs')
         if( index != -1 ):
             hoursPlayed = float(hoursPlayedStr[:index])
-            print "this game has been played %s hours<br>" % hoursPlayed
+            print game.name + ": %s hours<br>" % hoursPlayed
+        else:
+            print game.name + ": 0 hours<br>"
 
 printGameDetails( oneGameSoup )
 print "<br>"
