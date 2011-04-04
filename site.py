@@ -57,7 +57,8 @@ def getGenres( soup ):
 
     return genres
 
-def getImages( soup ):
+def getBadges( soup ):
+    """Get the badges/icons that represent features of a game"""
     gameDetails = soup.findAll("div", { "class" : "game_area_details_specs" })
 
     images = []
@@ -74,7 +75,7 @@ def getGameName( soup ):
 
 def printGameDetails( soup ):
     print getGameName( soup ) + ": "
-    print getImages( soup )
+    print getBadges( soup )
     print getGenres( soup )
 
 
