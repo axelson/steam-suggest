@@ -130,9 +130,6 @@ else:
 
 soup = BeautifulSoup(text)
 gameList = parseGameList( soup )
-gameTagList = soup.findAll("div", { "class" : "gameListRow" }, limit=3)
-for gameTag in gameTagList :
-    print gameTag.renderContents()
 #if they set up their own id then use /id if they're using a profile number than use /profiles
 
 print "Checking url: " + url
