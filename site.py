@@ -86,9 +86,9 @@ class Game:
         print 'Hi there, this is' + self.name
 
 
-def getTimePlayed( allGameSoup ):
+def parseGameList( allGameSoup ):
     """Get the time played for each game from the all games page/tab"""
-    print "start getTimePlayed"
+    print "start parseGameList"
     games = allGameSoup.findAll("div", { "class" : "gameListRowItem" })
     for gameTag in games:
         print "\n"
@@ -123,7 +123,7 @@ else:
 games = re.findall("rgGames\[.*= '(.*)';", text)
 
 soup = BeautifulSoup(text)
-getTimePlayed( soup )
+parseGameList( soup )
 gameList = soup.findAll("div", { "class" : "gameListRow" }, limit=3)
 for game in gameList :
     print game.renderContents()
