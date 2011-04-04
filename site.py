@@ -78,6 +78,18 @@ def printGameDetails( soup ):
     print getBadges( soup )
     print getGenres( soup )
 
+class Game:
+    def __init__(self, name):
+        self.name = name
+    def sayHi(self):
+        print 'Hi there, this is' + self.name
+
+
+def getTimePlayed( allGameSoup ):
+    """Get the time played for each game from the all games page/tab"""
+    print "start getTimePlayed"
+    game = Game('bob')
+    game.sayHi()
 
 printGameDetails( oneGameSoup )
 print "<br>"
@@ -102,6 +114,7 @@ else:
 games = re.findall("rgGames\[.*= '(.*)';", text)
 
 soup = BeautifulSoup(text)
+getTimePlayed( soup )
 gameList = soup.findAll("div", { "class" : "gameListRow" }, limit=3)
 for game in gameList :
     print game.renderContents()
