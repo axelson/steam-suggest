@@ -89,6 +89,11 @@ def getTimePlayed( allGameSoup ):
     """Get the time played for each game from the all games page/tab"""
     print "start getTimePlayed"
     game = Game('bob')
+    games = allGameSoup.findAll("div", { "class" : "gameListRowItem" })
+    print "\n"
+    index = games[0].h5.text.index(' hrs')
+    hoursPlayed = float(games[0].h5.text[:index])
+    print "this game has been played %s hours" % hoursPlayed
     game.sayHi()
 
 printGameDetails( oneGameSoup )
