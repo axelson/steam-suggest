@@ -97,6 +97,8 @@ def parseGameList( allGameSoup ):
         print "\n"
         gameName = gameTag.h4.text
         game = Game(gameName)
+        game.logo = gameTag.parent.img
+        game.href = gameTag.parent.a['href']
         hoursPlayedStr = gameTag.h5.text
         index = hoursPlayedStr.find(' hrs')
         if( index != -1 ):
@@ -164,6 +166,7 @@ Here are the games you own:
 
 for game in gameList :
     print "<li>"
+    print game.logo
     print game.name
     print "</li>"
 
