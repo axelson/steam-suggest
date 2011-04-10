@@ -182,16 +182,9 @@ else:
     text = urllib.urlopen(url).read()
 
 soup = BeautifulSoup(text)
+
 gameList = parseGameList( soup )
 print "<br>href: " + gameList[0].href + "<br><br>"
-
-for game in gameList[0:3] :
-    print game.name
-    print "<br>"
-    gameHtml = getGameHtml(game)
-    gameSoup = BeautifulSoup(gameHtml)
-    printGameDetails( gameSoup )
-    print "<br>"
 
 #if they set up their own id then use /id if they're using a profile number than use /profiles
 
