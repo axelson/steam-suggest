@@ -97,7 +97,14 @@ class Game:
         print 'Hi there, this is' + self.name
     def printDetails(self):
         print "%s: %s hours" % (self.name, self.hoursPlayed)
-
+    def addInfo(self):
+        print "adding info to game: " + self.name + "<br>"
+        html = getGameHtml(self)
+        if(html == None):
+            return
+        soup = BeautifulSoup( html )
+        self.genres = getGenres( soup )
+        self.badges = getBadges( soup )
 
 def parseGameList( allGameSoup ):
     """Get the time played for each game from the all games page/tab"""
@@ -110,6 +117,7 @@ def parseGameList( allGameSoup ):
         game = Game(gameName)
         game.logo = gameTag.parent.img
         game.href = gameTag.parent.a['href']
+        game.addInfo()
         hoursPlayedStr = gameTag.h5.text
         index = hoursPlayedStr.find(' hrs')
         if( index != -1 ):
@@ -126,11 +134,26 @@ def getGameHtml( game ):
     print "Getting html for url: " + url + "<br>"
     gameCache = shelve.open("gameCache")
     if( gameCache.has_key(url) ):
+        print "cached html<br>"
         html = gameCache[url]
     else:
-        html = urllib.urlopen(url).read()
-        gameCache[url] = html
+        print "downloading html<br>"
+        urlObj = urllib.urlopen(url)
+        if(urlObj.geturl() != url):
+            print " We now need to pass the age verification"
+            print "new url: " + urlObj.geturl()
+            form = dict(ageDay="1", ageMonth="January", ageYear="1970")
+            htmlUrl = urllib.urlopen(urlObj.geturl(), urllib.urlencode(form))
+            html = htmlUrl.read()
+            html = None
+        else:
+            html = urlObj.read()
+            gameCache[url] = html
 
+
+    #soup = BeautifulSoup(html)
+    #if(len(soup.findAll(text="Please enter your birth date to continue:")) > 0):
+    #    print "stuck behind date wall"
     gameCache.close()
     return html
 
