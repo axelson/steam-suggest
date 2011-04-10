@@ -51,7 +51,10 @@ def getGenres( soup ):
     gameDetails = soup.findAll("div", { "class" : "game_area_details_specs" })
 
     genres = []
-    detailsBlock = soup.find(text='Genre:').parent.parent
+    genreBlock = soup.find(text='Genre:')
+    if(genreBlock == None):
+        return genres
+    detailsBlock = genreBlock.parent.parent
     genreTags = detailsBlock.findAll(href=re.compile('genre'))
     for genre in genreTags :
         genres.append( genre )
