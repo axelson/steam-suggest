@@ -2,6 +2,7 @@
 import re
 import cgi
 import urllib
+import shelve
 from BeautifulSoup import BeautifulSoup
 
 print "Content-type: text/html\n\n"
@@ -107,7 +108,23 @@ def parseGameList( allGameSoup ):
         games.append(game)
     return games
 
+def getGameHtml( game ):
+    print "Getting html for game: " + game.name + "<br>"
+    print "Getting html for url: " + game.href + "<br>"
+    # Convert to ascii
+    url = game.href.encode('ascii', 'ignore')
+    print "Getting html for url: " + url + "<br>"
+    gameCache = shelve.open("gameCache")
+    if( gameCache.has_key(url) ):
+        html = gameCache[url]
+    else:
+        html = urllib.urlopen(url).read()
+        gameCache[url] = html
 
+    gameCache.close()
+    return html
+
+print "About to print game details<br>"
 printGameDetails( oneGameSoup )
 print "<br>"
 braidSoup = BeautifulSoup(open('braid.html'))
@@ -130,6 +147,16 @@ else:
 
 soup = BeautifulSoup(text)
 gameList = parseGameList( soup )
+print "<br>href: " + gameList[0].href + "<br><br>"
+
+for game in gameList[0:3] :
+    print game.name
+    print "<br>"
+    gameHtml = getGameHtml(game)
+    gameSoup = BeautifulSoup(gameHtml)
+    printGameDetails( gameSoup )
+    print "<br>"
+
 #if they set up their own id then use /id if they're using a profile number than use /profiles
 
 print "Checking url: " + url
