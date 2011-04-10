@@ -62,11 +62,14 @@ def getBadges( soup ):
     """Get the badges/icons that represent features of a game"""
     gameDetails = soup.findAll("div", { "class" : "game_area_details_specs" })
 
-    images = []
+    badges = []
     for detail in gameDetails :
-        images.append(detail.img)
+        image = detail.img
+        description = detail.find("div", { "class" : "name" }).text
+        badge = Badge(image, description)
+        badges.append(badge)
 
-    return images
+    return badges
 
 def getGameName( soup ):
     gameDetails = soup.findAll("div", { "class" : "game_area_details_specs" })
@@ -76,8 +79,15 @@ def getGameName( soup ):
 
 def printGameDetails( soup ):
     print getGameName( soup ) + ": "
-    print getBadges( soup )
+    for badge in getBadges( soup ):
+        print badge.image
     print getGenres( soup )
+
+class Badge:
+    def __init__(self, image, description):
+        self.image = image
+        self.description = description
+        self.image["title"] = description
 
 class Game:
     def __init__(self, name):
